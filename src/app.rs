@@ -6,16 +6,16 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone)]
 enum AppType {
     Mail,
-    Calendar,
-    Addressbook,
+    // Calendar,
+    // Addressbook,
 }
 
 #[derive(Default)]
 #[derive(Serialize, Deserialize)]
 struct Apps {
     mail_app: crate::apps::MailApp,
-    calendar_app: crate::apps::CalendarApp,
-    addressbook_app: crate::apps::AddressbookApp,
+    // calendar_app: crate::apps::CalendarApp,
+    // addressbook_app: crate::apps::AddressbookApp,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -29,7 +29,7 @@ struct App {
 #[serde(default)]
 pub struct Spider {
     #[serde(skip)]
-    available_apps: [App; 3],
+    available_apps: [App; 1],
     selected_app: App,
     authorized: bool,
     apps: Apps,
@@ -44,8 +44,8 @@ impl Default for Spider {
         // FIXME(maltalef): On the above note: This SUCKS. I don't like having hardcoded things.
         let available_apps = [
             App { app_type: AppType::Mail, name: "Mail".to_string(), },
-            App { app_type: AppType::Calendar, name: "Calendar".to_string(), },
-            App { app_type: AppType::Addressbook, name: "Addressbook".to_string(), },
+            // App { app_type: AppType::Calendar, name: "Calendar".to_string(), },
+            // App { app_type: AppType::Addressbook, name: "Addressbook".to_string(), },
         ];
 
         Self {
@@ -76,14 +76,17 @@ impl Spider {
                 &self.available_apps[0],
                 &mut self.apps.mail_app as &mut dyn eframe::App,
             ),
-            (
-                &self.available_apps[1],
-                &mut self.apps.calendar_app as &mut dyn eframe::App,
-            ),
-            (
-                &self.available_apps[2],
-                &mut self.apps.addressbook_app as &mut dyn eframe::App,
-            ),
+
+            // NOTE(maltalef): When the JMAP Calendar and Addressbook drafts finally end up being RFCs,
+            // I will implement such functionality.
+            // (
+            //     &self.available_apps[1],
+            //     &mut self.apps.calendar_app as &mut dyn eframe::App,
+            // ),
+            // (
+            //     &self.available_apps[2],
+            //     &mut self.apps.addressbook_app as &mut dyn eframe::App,
+            // ),
         ];
 
         vec.into_iter()
