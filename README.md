@@ -17,3 +17,6 @@ syncing solution for the following:
 They don't exist. Yet.
 
 This repo only hosts the web application.
+
+## DEVELOPMENT
+See `CONTRIBUTING.md`
