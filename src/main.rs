@@ -12,7 +12,7 @@ fn main() {
     eframe::start_web(
         "spider-wasm-root", // hardcode it
         web_options,
-        Box::new(|cc| Box::new(spider_head::Spider::new(cc))),
+        Box::new(|cc| Box::new(wolf::Wolf::new(cc))),
     )
         .expect("failed to start eframe");
 }

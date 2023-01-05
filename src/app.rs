@@ -27,7 +27,7 @@ struct App {
 
 #[derive(Serialize, Deserialize)]
 #[serde(default)]
-pub struct Spider {
+pub struct Wolf {
     #[serde(skip)]
     available_apps: [App; 1],
     selected_app: App,
@@ -35,7 +35,7 @@ pub struct Spider {
     apps: Apps,
 }
 
-impl Default for Spider {
+impl Default for Wolf {
     fn default() -> Self {
         // NOTE(maltalef): The order of definition of the items of the following vector is a sensitive
         // thing to change and I WOULD NOT reccomend modifying it. Unless, of course, you know what
@@ -57,7 +57,7 @@ impl Default for Spider {
     }
 }
 
-impl Spider {
+impl Wolf {
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
         // TIP: cc.egui_ctx.set_visuals // set_fonts
 
@@ -102,7 +102,7 @@ impl Spider {
     }
 }
 
-impl eframe::App for Spider {
+impl eframe::App for Wolf {
     fn save(&mut self, storage: &mut dyn eframe::Storage) {
         eframe::set_value(storage, eframe::APP_KEY, self);
     }
