@@ -71,6 +71,8 @@ impl Wolf {
     }
 
     fn apps_iter_mut(&mut self) -> impl Iterator<Item = (&App, &mut dyn eframe::App)> {
+
+        // FIXME(maltalef): Find a better way of doing the following.
         let vec = vec![
             (
                 &self.available_apps[0],
